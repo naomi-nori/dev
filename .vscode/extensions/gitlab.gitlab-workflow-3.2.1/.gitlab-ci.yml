@@ -1,0 +1,76 @@
+include:
+  - template: SAST.gitlab-ci.yml
+  - template: Dependency-Scanning.gitlab-ci.yml
+  - template: License-Scanning.gitlab-ci.yml
+
+image: node:12-slim
+
+stages:
+  - test
+  - package
+  - publish
+
+lint:
+  stage: test
+  script:
+    - npm ci
+    - npm run eslint
+
+lint_commit:
+  stage: test
+  script:
+    - apt-get update && apt-get install -y git
+    - git fetch origin $CI_MERGE_REQUEST_TARGET_BRANCH_NAME && git checkout $CI_MERGE_REQUEST_TARGET_BRANCH_NAME && git checkout $CI_COMMIT_SHA
+    - cd scripts/commit-lint && npm ci
+    - node lint.js
+  rules:
+    - if: '$CI_MERGE_REQUEST_IID'
+      when: always
+
+test-unit:
+  stage: test
+  script:
+    - npm ci
+    - npm run test-unit
+
+test-integration:
+  stage: test
+  variables:
+    DISPLAY: ':99.0'
+  script:
+    - apt-get update
+    - apt-get install -y xvfb libxtst6 libnss3 libgtk-3-0 libxss1 libasound2 libsecret-1-0 git
+    - npm ci
+    - echo $DISPLAY
+    - /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    - npm run test-integration
+
+package:
+  stage: package
+  script:
+    - npm ci
+    - cd src/webview && npm install && npm run build && cd ../.. # build webview
+    - npx vsce package
+  artifacts:
+    paths:
+      - '*.vsix'
+    expire_in: 1 year
+  only:
+    - tags
+
+publish_marketplace:
+  stage: publish
+  script:
+    - npx vsce publish --packagePath *.vsix -p $AZURE_ACCESS_TOKEN
+  when: manual
+  only:
+    - tags
+
+publish_open_vsx:
+  stage: publish
+  script:
+    - npx ovsx publish *.vsix -p $OPENVSX_ACCESS_TOKEN
+  when: manual
+  only:
+    - tags
+

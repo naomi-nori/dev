@@ -1,0 +1,9 @@
+.issue-id {
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #6c757dbb;
+  border-radius: 0.25rem;
+  font-weight: 700;
+  font-size: 75%;
+  padding: 2px 6px;
+  cursor: pointer;
+}

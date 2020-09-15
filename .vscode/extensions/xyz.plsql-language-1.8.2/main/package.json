@@ -1,0 +1,21 @@
+{
+    "name": "plsql-language-main",
+    "displayName": "Language PL/SQL",
+    "description": "PL/SQL language (Oracle) support",
+    "version": "0.0.1",
+    "publisher": "xyz",
+    "engines": {
+        "vscode": "^1.32.3"
+    },
+    "scripts": {
+        "update-vscode": "vscode-install",
+        "postinstall": "vscode-install"
+    },
+    "dependencies": {
+        "glob": "7.1.3",
+        "iconv-lite": "0.4.24",
+        "json5": "2.1.0",
+        "dateformat": "3.0.3",
+        "vscode-languageclient": "5.2.1"
+    }
+}

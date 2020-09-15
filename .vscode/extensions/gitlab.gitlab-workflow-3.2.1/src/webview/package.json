@@ -1,0 +1,28 @@
+{
+  "name": "webview",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "node_modules/.bin/vue-cli-service serve",
+    "build": "node_modules/.bin/vue-cli-service build",
+    "watch": "node_modules/.bin/vue-cli-service build --watch",
+    "test:unit": "node_modules/.bin/vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "markdown-it": "^10.0.0",
+    "markdown-it-checkbox": "^1.1.0",
+    "moment-timezone": "^0.5.27",
+    "vue": "^2.6.11",
+    "v-tooltip": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-unit-mocha": "^4.1.2",
+    "@vue/cli-service": "^4.1.2",
+    "@vue/test-utils": "^1.0.0-beta.31",
+    "chai": "^4.2.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

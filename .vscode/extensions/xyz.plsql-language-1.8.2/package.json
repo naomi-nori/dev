@@ -1,0 +1,306 @@
+{
+	"name": "plsql-language",
+	"displayName": "Language PL/SQL",
+	"description": "PL/SQL language (Oracle) support",
+	"version": "1.8.2",
+	"publisher": "xyz",
+	"engines": {
+		"vscode": "^1.32.3"
+	},
+	"homepage": "https://github.com/zabel-xyz/plsql-language",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zabel-xyz/plsql-language.git"
+	},
+	"bugs": {
+		"url": "https://github.com/zabel-xyz/plsql-language/issues"
+	},
+	"icon": "images/plsql-language.png",
+	"categories": [
+		"Programming Languages"
+	],
+	"keywords": [
+		"plsql",
+		"oracle",
+		"multi-root ready"
+	],
+	"activationEvents": [
+		"onLanguage:plsql",
+		"onCommand:plsql.activateConnection",
+		"onCommand:plsql.executeCommand",
+		"onCommand:plsql.createConnection",
+		"onCommand:plsql.removeConnection"
+	],
+	"main": "./main/out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "plsql",
+				"aliases": [
+					"PLSQL",
+					"PL/SQL",
+					"plsql"
+				],
+				"extensions": [
+					".sql",
+					".ddl",
+					".dml",
+					".pkh",
+					".pks",
+					".pkb",
+					".pck",
+					".pls",
+					".plb",
+					".bdy",
+					".fnc",
+					".idx",
+					".mv",
+					".prc",
+					".prg",
+					".sch",
+					".seq",
+					".spc",
+					".syn",
+					".tab",
+					".tbl",
+					".tbp",
+					".tps",
+					".trg",
+					".typ",
+					".vw"
+				],
+				"configuration": "./syntaxes/plsql.configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "plsql",
+				"scopeName": "source.plsql.oracle",
+				"path": "./syntaxes/plsql.tmLanguage"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "PL/SQL configuration",
+			"properties": {
+				"plsql-language.searchPaths": {
+					"type": [
+						"string",
+						"array",
+						"null"
+					],
+					"default": null,
+					"markdownDescription": "Paths to search plsql files (default is to search in all workspaces) [read more](https://github.com/zabel-xyz/plsql-language/blob/master/README.md#define-search-paths)"
+				},
+				"plsql-language.synonym": {
+					"type": "object",
+					"properties": {
+						"plsql-language.replace": {
+							"type": "string",
+							"default": null
+						},
+						"plsql-language.by": {
+							"type": "string",
+							"default": null
+						}
+					},
+					"description": "Usage of synonmy for package name. To replace synonym by real package name when navigate. ('replace' could be a regular expression)"
+				},
+				"plsql-language.commentInSymbols": {
+					"type": "boolean",
+					"default": false,
+					"description": "Use comments between symbol and name (e.g. create or replace package /** **/ name)"
+				},
+				"plsql-language.snippets.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable snippets"
+				},
+				"plsql-language.hover.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable hover feature"
+				},
+				"plsql-language.signatureHelp.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable signature help feature"
+				},
+				"plsql-language.completion.path": {
+					"type": "string",
+					"default": null,
+					"description": "Specify the folder location where to find plsql.completion.json (null: no custom completion)"
+				},
+				"plsql-language.pldoc.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable a special snippet for automatic documentation of procedures and functions"
+				},
+				"plsql-language.pldoc.path": {
+					"type": "string",
+					"default": null,
+					"description": "Specify the folder location where to find pldoc.json (null: use the default file)"
+				},
+				"plsql-language.pldoc.author": {
+					"type": "string",
+					"default": "",
+					"description": "Define string to replace variable ${PLDOC_AUTHOR}"
+				},
+				"plsql-language.connections": {
+					"type": "array",
+					"title": "Connections",
+					"default": [],
+					"items": {
+						"type": "object",
+						"properties": {
+							"active": {
+								"type": "boolean",
+								"required": false,
+								"description": "Define the active connection"
+							},
+							"database": {
+								"type": "string",
+								"required": true,
+								"description": "Database name"
+							},
+							"username": {
+								"type": "string",
+								"required": true,
+								"description": "User name"
+							},
+							"password": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "User password",
+								"required": false
+							},
+							"privilege": {
+								"type": "string",
+								"description": "Privilege (SYSDBA, SYSOPER, SYSASM, SYSBACKUP, SYSDG, SYSKM, SYSRA)",
+								"required": false
+							},
+							"schema": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "Schema name",
+								"required": false
+							},
+							"loginScript": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "Login script",
+								"required": false
+							},
+							"tag": {
+								"type": [
+									"string",
+									"null"
+								],
+								"description": "Tag",
+								"required": false
+							}
+						}
+					}
+				},
+				"plsql-language.connection.activeInfos": {
+					"type": "string",
+					"default": "",
+					"description": "Connection infos to be used in a task"
+				},
+				"plsql-language.connection.patternActiveInfos": {
+					"type": "string",
+					"default": "${username}/${password}@${database}",
+					"description": "Pattern of connection infos to be used in a task"
+				},
+				"plsql-language.connection.patternName": {
+					"type": "string",
+					"default": "${username}@${database}",
+					"description": "Pattern of connection name to be used for displaying"
+				},
+				"plsql-language.oracleConnection.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "Allow connect to Oracle DB"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "plsql.activateConnection",
+				"title": "PLSQL - Activate connection"
+			},
+			{
+				"command": "plsql.runQuery",
+				"title": "PLSQL - run current command"
+			},
+			{
+				"command": "plsql.executeCommand",
+				"title": "PLSQL - execute a command and get result (external request)"
+			},
+			{
+				"command": "plsql.createConnection",
+				"title": "PLSQL - create a new connection (external request)"
+			},
+			{
+				"command": "plsql.removeConnection",
+				"title": "PLSQL - remove a connection (external request)"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "plsql.executeCommand",
+					"when": "false"
+				},
+				{
+					"command": "plsql.createConnection",
+					"when": "false"
+				},
+				{
+					"command": "plsql.removeConnection",
+					"when": "false"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "plsql.runQuery",
+					"when": "resourceLangId == plsql && config.plsql-language.oracleConnection.enable"
+				}
+			]
+		},
+		"keybindings": {
+			"command": "plsql.runQuery",
+			"when": "resourceLangId == plsql && config.plsql-language.oracleConnection.enable && editorTextFocus",
+			"key": "ctrl+enter"
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "cd main && npm run update-vscode && cd .. && npm run compile",
+		"compile:main": "tsc -p ./main/tsconfig.json",
+		"compile:server-oracle": "tsc -p ./server-oracle/tsconfig.json",
+		"compile": "npm run compile:main && npm run compile:server-oracle",
+		"compile:test": "tsc -p ./main/test/tsconfig.json",
+		"postinstall": "cd main && npm install && cd ../server-oracle && npm install"
+	},
+	"devDependencies": {
+		"typescript": "3.4.1",
+		"vscode": "1.1.33",
+		"mocha": "6.0.2",
+		"@types/node": "11.12.2",
+		"@types/mocha": "5.2.6"
+	},
+	"dependencies": {
+		"ag-grid-community": "20.2.0"
+	},
+	"__metadata": {
+		"id": "ea52326c-68a8-4587-a2f0-abb0a91e455a",
+		"publisherId": "2a0c0493-25f5-40fa-9500-8d15c40b42e7",
+		"publisherDisplayName": "xyz"
+	}
+}
