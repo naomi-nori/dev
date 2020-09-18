@@ -3,6 +3,7 @@ execute pathogen#infect()
 filetype plugin indent on
 set number
 set hidden
+set background=dark
 set fillchars+=vert:\ 
 
 
@@ -11,6 +12,7 @@ highlight GitGutterAdd ctermfg=2
 highlight GitGutterChange ctermfg=3
 highlight GitGutterDelete ctermfg=1
 highlight GitGutterChangeDelete ctermfg=4
+highlight! link SignColumn LineNr
 
 
 " Move to the next buffer
@@ -56,6 +58,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:airline_theme='bubblegum'
+
 "folding settings
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
@@ -72,3 +76,9 @@ set expandtab
 
 set backspace=2 " make backspace work like most other apps"
 set mouse=a
+
+if !has("gui_running")
+    set t_Co=256
+    set term=screen-256color
+endif
+
