@@ -61,7 +61,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:airline_theme='bubblegum'
+let g:airline_theme='minimalist'
 
 "folding settings
 set foldmethod=indent   "fold based on indent
