@@ -56,5 +56,5 @@
 	path = .tmux-power
 	url = https://github.com/wfxr/tmux-power.git
 [submodule ".vim/colorschemes/vim-colors-xcode"]
-	path = .vim/colorschemes/vim-colors-xcode
+	path = .vim/bundle/vim-colors-xcode
 	url = https://github.com/arzg/vim-colors-xcode.git
