@@ -44,7 +44,7 @@
 	path = .vim/bundle/dockerfile.vim
 	url = https://github.com/ekalinin/dockerfile.vim
 [submodule "/Users/naomi.wilkins/.vim/bundle/vem-tabline"]
-	path = /Users/naomi.wilkins/.vim/bundle/vem-tabline
+	path = .vim/bundle/vem-tabline
 	url = https://github.com/pacha/vem-tabline.git
 [submodule ".tmux-themepack"]
 	path = .tmux-themepack
