@@ -5,6 +5,8 @@ set number
 set hidden
 set background=dark
 set fillchars+=vert:\ 
+set backupdir=$TMPDIR//
+set directory=$TMPDIR//
 
 colorscheme xcodedark
 
