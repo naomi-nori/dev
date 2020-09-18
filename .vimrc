@@ -6,6 +6,7 @@ set hidden
 set background=dark
 set fillchars+=vert:\ 
 
+colorscheme xcodedark
 
 highlight clear SignColumn
 highlight GitGutterAdd ctermfg=2
