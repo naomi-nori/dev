@@ -52,3 +52,6 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule ".tmux-power"]
+	path = .tmux-power
+	url = https://github.com/wfxr/tmux-power.git
