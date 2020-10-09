@@ -58,3 +58,6 @@
 [submodule ".vim/colorschemes/vim-colors-xcode"]
 	path = .vim/bundle/vim-colors-xcode
 	url = https://github.com/arzg/vim-colors-xcode.git
+[submodule "/Users/naomi.wilkins/.vim/bundle/Vundle.vim"]
+	path = /Users/naomi.wilkins/.vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
