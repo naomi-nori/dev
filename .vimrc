@@ -1,6 +1,36 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'valloric/youcompleteme'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'raimondi/delimitmate'
+Plugin 'ekalinin/dockerfile.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'arzg/vim-colors-xcode'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-surround'
+Plugin 'pacha/vem-tabline'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 syntax on
-execute pathogen#infect()
-filetype plugin indent on
 set number
 set hidden
 set background=dark
@@ -39,7 +69,7 @@ nmap g7 :VemTablineGo 7<CR>
 nmap g8 :VemTablineGo 8<CR>
 nmap g9 :VemTablineGo 9<CR>
 
-hi VertSplit ctermfg=NONE ctermbg=NONE cterm=NONE
+" hi VertSplit ctermfg=NONE ctermbg=NONE cterm=NONE
 hi HoriSplit ctermfg=NONE ctermbg=NONE cterm=NONE
 hi TabLine ctermfg=NONE ctermbg=NONE cterm=NONE
 hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
@@ -60,6 +90,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_ruby_mri_exec = '/usr/local/opt/ruby@2.6/bin/ruby'
+let g:syntastic_quiet_messages = { 'regex': 'method redefined\|previous definition of'}
 
 let g:airline_theme='minimalist'
 
@@ -82,6 +115,6 @@ set mouse=a
 
 if !has("gui_running")
     set t_Co=256
-    set term=screen-256color
+    " set term=screen-256color
 endif
 
