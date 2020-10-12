@@ -47,4 +47,6 @@ tmux-server*
 .Trash
 .DS_Store
 .CFUserTextEncoding
-
+.vim/bundle
+.floorc.json
+floobits
