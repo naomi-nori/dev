@@ -24,12 +24,15 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
 Plugin 'pacha/vem-tabline'
+Plugin 'floobits/floobits-neovim'
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set autoread 
+au CursorHold * checktime
 syntax on
 set number
 set hidden
