@@ -1,3 +1,4 @@
+" Vundle and plugin configuration
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -31,13 +32,71 @@ Plugin 'floobits/floobits-neovim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set autoread 
-au CursorHold * checktime
-syntax on
-set number
+" re-read files if changed outside vim
+set autoread
+
+" no case-sesative search unless uppercase is present
+set ignorecase
+set smartcase
+
+" enable mouse scroll
+set mouse=a
+
+" allow new buffer to be opened with out saving current
 set hidden
+
+" tab settings
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set backspace=2 " make backspace work like most other apps"
+set smarttab
+set autoindent
+set smartindent
+set shiftround
+
+" enable syntax highlighting
+syntax on
+
+" matching braces/tags
+set showmatch
+
+" line wrapping
+set wrap
+
+" turn on detection for filetypes, indentation files, and plubinfiles
+filetype plugin indent on
+
+" show next 3 lines while scrolling
+if !&scrolloff
+set scrolloff=3
+endif
+
+" show next 5 columns while side scrolling
+if !&sidescrolloff
+set sidescrolloff=5
+endif
+
+" jump to last known position when reopening file
+if has("autocmd")
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+\| exe "normal! g'\"" | endif
+endif
+
+" relative number lines
+set number
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+
+" delete all trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
 set background=dark
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 set backupdir=$TMPDIR//
 set directory=$TMPDIR//
 
@@ -105,19 +164,7 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" " when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" " On pressing tab, insert 4 spaces
-set expandtab
-
-set backspace=2 " make backspace work like most other apps"
-set mouse=a
-
 if !has("gui_running")
     set t_Co=256
     " set term=screen-256color
 endif
-
