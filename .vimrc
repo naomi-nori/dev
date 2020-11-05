@@ -26,6 +26,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
 Plugin 'pacha/vem-tabline'
 Plugin 'floobits/floobits-neovim'
+Plugin 'philrunninger/nerdtree-visual-selection'
 
 
 " All of your Plugins must be added before the following line
@@ -52,7 +53,6 @@ set softtabstop=4
 set shiftwidth=4
 set backspace=2 " make backspace work like most other apps"
 set smarttab
-set autoindent
 set smartindent
 set shiftround
 
@@ -86,11 +86,12 @@ endif
 
 " relative number lines
 set number
-augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-augroup END
+set relativenumber
+"augroup numbertoggle
+"    autocmd!
+"    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+"augroup END
 
 " delete all trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
