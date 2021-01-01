@@ -1,0 +1,41 @@
+# Operations:
+
+Delete key? and value specified by json pointer
+Insert key? and value specified by json pointer
+Rename key
+Replace value
+
+
+# Required AST Apis
+
+delete key/value specified by a json pointer
+  yaml
+  json
+    take care to remove comma if necessary
+
+insert key/value specified by a json pointer
+  yaml
+    calculate offsets
+  json
+    calculate offsets
+    take care of comma
+
+rename key
+  yaml
+    need range for key
+  json
+    need range for key
+
+replace value
+  yaml
+    need range for value
+
+  json
+     need range for value
+
+# New api to create text edits for insertion/update based on target language and values
+
+when no documents is open tree is still displayed
+when no documents is open or report is selected, audit button is active
+  Run Audit
+  Close the File, but leave the Report
